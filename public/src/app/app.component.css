@@ -1,0 +1,71 @@
+.container{
+    width: 87% !important;
+    text-align: center;
+}
+
+.container h3{
+    text-align: left;
+    margin-left: 15px;
+}
+
+form {
+    display: inline-block;
+    height: 160px;
+    padding: 10px;
+    margin: 15px;
+    border: 1px solid grey;
+    border-radius: 10px;
+    text-align: center;
+}
+
+.text-left{
+    margin: 0px 0px 0px 15px !important;
+}
+
+.actives{
+    width: 96%;
+    height: 200px;
+    border: 1px solid rgb(160, 160, 160);;
+    border-radius: 10px;
+    margin: 0px 0px 20px 15px;
+    padding-left: 5px;
+    overflow: scroll;
+    text-align: left;
+}
+
+.actives p{
+    margin: 0px;
+}
+
+
+.login form {
+    height: 200px;
+    margin: auto;
+    text-align: center;
+    padding: 25px;
+    border: 1px solid grey;
+    border-radius: 10px;
+    background-color: #dff9fb;
+}
+
+.login{
+    margin: 25px;
+}
+
+.login button {
+    margin: 10px;
+    text-align: center;
+}
+
+.game-box{
+    margin-top: 10vh;
+    border: 1px solid rgb(160, 160, 160);
+    border-radius: 10px;
+    background-color: #dff9fb;
+    padding: 20px;
+}
+
+.player-box{
+    text-align: left;
+
+}

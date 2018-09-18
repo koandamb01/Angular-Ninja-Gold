@@ -1,0 +1,101 @@
+<div class="container">
+  <div class="login" *ngIf="!gameStart">
+    <button class="btn btn-primary" (click)="newUser=true; returnUser=false; ngOnInit()">New Game</button>
+    <button class="btn btn-success" (click)="returnUser=true; newUser=false; ngOnInit()">Return User</button>
+    <br>
+    <form (submit)="getNewGame()" *ngIf="newUser">
+      <p>Enter Game Name to Start</p>
+      <div class="form-group">
+        <span class="text-danger" *ngIf="errMessage.message.userName">{{ errMessage.message.userName }}</span>
+        <input type="text" class="form-control" [(ngModel)]="newGame.userName" name="newGame.userName" placeholder="Game Name">
+      </div>
+      <button type="submit" class="btn btn-primary">Start Game</button>
+    </form>
+
+    <form (submit)="getGame()" *ngIf="returnUser">
+      <p>Returner Game Name</p>
+      <div class="form-group">
+        <span class="text-danger" *ngIf="errMessage.message.userName">{{ errMessage.message.userName }}</span>
+        <input type="text" class="form-control" [(ngModel)]="returnGame.userName" name="returnGame.userName"
+          placeholder="Game Name">
+      </div>
+      <button type="submit" class="btn btn-primary">Start Game</button>
+    </form>
+  </div>
+
+  <div class="game-box" *ngIf="gameStart">
+    <h1>Game is Process...</h1>
+    <br>
+    <div class="row">
+      <div class="col-md-4 player-box">
+        <span class="text-success" *ngIf="errMessage.status ==true && errMessage.message.reset">{{
+          errMessage.message.reset }}</span>
+        <ul class="list-group">
+          <li class="list-group-item d-flex justify-content-between align-items-center active">
+            Name:
+            <span class="badge badge-primary badge-pill">{{ game.userName }}</span>
+          </li>
+          <li class="list-group-item d-flex justify-content-between align-items-center">
+            Game Score:
+            <span class="badge badge-primary badge-pill">{{ game.score }}</span>
+          </li>
+          <li class="list-group-item d-flex justify-content-between align-items-center">
+            <button class="btn btn-danger" (click)="resetGame()">Reset Game</button>
+          </li>
+          <li class="list-group-item d-flex justify-content-between align-items-center">
+            <i class="text text-warning">*Reseting Game will make your game score to zero!</i>
+          </li>
+        </ul>
+      </div>
+      <div class="col-md-4 beat">
+        <p class="text text-primary" style="margin-top: 90px;">Can You Beat these scores? ====> </p>
+      </div>
+      <div class="col-md-4">
+        <ul class="list-group">
+          <li class="list-group-item d-flex justify-content-between align-items-center active">
+            Top 3 Score
+          </li>
+          <li class="list-group-item d-flex justify-content-between align-items-center" *ngFor="let gamer of topThree">
+            {{ gamer.userName }}:
+            <span class="badge badge-primary badge-pill">{{ gamer.score }}</span>
+          </li>
+
+        </ul>
+      </div>
+    </div>
+
+    <br><br>
+    <!-- FARM -->
+    <form class=" bg-success">
+      <h2>Farm</h2>
+      <p>(earns 10-20 golds)</p>
+      <button class="btn btn-warning" (click)="checkFarm()">Find Gold</button>
+    </form>
+
+    <!-- Cave -->
+    <form class="bg-secondary">
+      <h2>Cave</h2>
+      <p>(earns 5-10 golds)</p>
+      <button class="btn btn-warning" (click)="checkCave()">Find Gold</button>
+    </form>
+
+    <!-- House -->
+    <form class="bg-primary">
+      <h2>House</h2>
+      <p>(earns 2-5 golds)</p>
+      <button class="btn btn-warning" (click)="checkHouse()">Find Gold</button>
+    </form>
+
+    <!-- Casino -->
+    <form class="bg-danger">
+      <h2>Casino</h2>
+      <p>(earns -50-50 golds)</p>
+      <button class="btn btn-warning" (click)="checkCasino()">Find Gold</button>
+    </form>
+
+    <p class="text-left">Activities:</p>
+    <div class="actives">
+      <p class='text-success' *ngFor="let message of earnMessage" [innerHTML]="message"></p>
+    </div>
+  </div>
+</div>
